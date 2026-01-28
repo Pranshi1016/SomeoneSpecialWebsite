@@ -1,0 +1,309 @@
+<html lang="en">
+<head><!DOCTYPE html>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Someone Special | 2025</title>
+    <!-- GSAP for Ultra-Smooth Scroll Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --accent-glow: #7c4dff; /* Modern Violet/Indigo */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --text-main: #f0f0f5;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Custom cursor for 2025 feel */
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Custom Cursor --- */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+
+        /* --- Ambient Background --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: blur(2px);
+        }
+
+        /* --- Sections --- */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 5vw;
+            position: relative;
+        }
+
+        /* --- Typography --- */
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .sub-text {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            margin-top: 20px;
+            opacity: 0;
+        }
+
+        /* --- Glassmorphic Cards --- */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            margin: 10vh 0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .panel-number {
+            font-size: 0.9rem;
+            color: var(--accent-glow);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- Scroll Progress --- */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-glow));
+            z-index: 1000;
+            width: 0%;
+        }
+
+        /* --- Interactive Button --- */
+        .cta-btn {
+            background: white;
+            color: black;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* --- Final Message Reveal --- */
+        .final-message {
+            text-align: center;
+            font-size: 2rem;
+            font-style: italic;
+            max-width: 800px;
+            line-height: 1.4;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 15px var(--accent-glow);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <div class="progress-bar"></div>
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- SECTION 1: HERO -->
+    <section id="hero">
+        <h1 class="hero-title">Hey, <span style="color: var(--accent-glow);">Handsome.</span></h1>
+        <p class="sub-text">I built this digital space just for you. Scroll down...</p>
+    </section>
+
+    <!-- SECTION 2: THE JOURNEY -->
+    <section>
+        <div class="glass-panel" data-scroll>
+            <span class="panel-number">Phase 01</span>
+            <h2>The First Spark</h2>
+            <p style="margin-top: 1rem; color: var(--text-dim);">
+                In a world of billions, somehow we found each other. Every day since then has felt a little more like home. 
+                I wanted to remind you of how much that first connection changed my entire universe.
+            </p>
+        </div>
+
+        <div class="glass-panel" data-scroll>
+            <span class="panel-number">Phase 02</span>
+            <h2>The Small Moments</h2>
+            <p style="margin-top: 1rem; color: var(--text-dim);">
+                It's the way you look when you're focused, the way you make me laugh when I'm stressed, 
+                and the quiet comfort of just existing in the same room. These aren't small things—they're my favorite things.
+            </p>
+        </div>
+
+        <div class="glass-panel" data-scroll>
+            <span class="panel-number">Phase 03</span>
+            <h2>Our Future</h2>
+            <p style="margin-top: 1rem; color: var(--text-dim);">
+                2025 is just another chapter in our story. I'm so proud of the man you are and the person 
+                you're becoming. Wherever we go, as long as it's together, it's perfect.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THE HEART -->
+    <section id="final">
+        <div class="final-message" data-scroll>
+            <p>You are my <span class="glow-text">favorite reality.</span></p>
+            <p style="font-size: 1.1rem; margin-top: 2rem; font-family: 'Inter'; font-style: normal;">
+                I love you more than this code can possibly express.
+            </p>
+            <button class="cta-btn" onclick="alert('❤️ You just sent a virtual hug back to me! I love you!')">Tap to send Love</button>
+        </div>
+    </section>
+
+    <script>
+        // 1. Register ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 2. Custom Cursor Movement
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, {
+                x: e.clientX - 10,
+                y: e.clientY - 10,
+                duration: 0.1
+            });
+        });
+
+        // 3. Ambient Background Animation (Stars/Particles)
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for(let i = 0; i < 100; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2,
+                    speed: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                p.y -= p.speed;
+                if(p.y < 0) p.y = canvas.height;
+            });
+            requestAnimationFrame(drawParticles);
+        }
+
+        initCanvas();
+        drawParticles();
+        window.onresize = initCanvas;
+
+        // 4. Entrance & Scroll Animations
+        window.onload = () => {
+            const tl = gsap.timeline();
+            
+            tl.to(".hero-title", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" })
+              .to(".sub-text", { opacity: 1, duration: 1 }, "-=0.5");
+
+            // Animate progress bar
+            gsap.to(".progress-bar", {
+                width: "100%",
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0.3
+                }
+            });
+
+            // Reveal Glass Panels on Scroll
+            gsap.utils.toArray('.glass-panel').forEach(panel => {
+                gsap.to(panel, {
+                    scrollTrigger: {
+                        trigger: panel,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.2,
+                    ease: "power3.out"
+                });
+            });
+
+            // Final Message Reveal
+            gsap.from(".final-message", {
+                scrollTrigger: {
+                    trigger: "#final",
+                    start: "top center"
+                },
+                scale: 0.9,
+                opacity: 0,
+                duration: 2,
+                ease: "expo.out"
+            });
+        };
+    </script>
+</body>
+</html>
